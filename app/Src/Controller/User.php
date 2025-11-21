@@ -2,6 +2,7 @@
 
 namespace App\Src\Controller;
 
+use App\Src\Controller\PageConstructor;
 class User{
     public function __construct(){
 
@@ -12,7 +13,7 @@ class User{
     }
 
     public function loginAction(){
-        __('login2');
+        $page_constr = new PageConstructor();
     }
 
     

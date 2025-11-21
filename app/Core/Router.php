@@ -11,7 +11,7 @@ class Router {
     private $is_process = false;
 
     private $static_routes = [
-        '/user/login/' => ['class'=> 'User', 'action' => 'login'],
+        '/user/auth/' => ['class'=> 'Page', 'action' => 'authPage'],
         'page404' => ['class' => 'Page', 'action' => '404'],
         '/' => ['class' => 'Page', 'action' => 'init']
     ];
