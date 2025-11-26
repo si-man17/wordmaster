@@ -4,7 +4,7 @@ namespace App\Core;
 
 class Config{
     private  static $db_connect = [
-        'localhost' => ['host' => 'mysql8.0', 'db_name' => 'wordmaster_db', 'user_name' => 'user', 'password' => 'password'],
+        'localhost' => ['host' => 'mysql8.0', 'db_name' => 'wordmaster_db', 'user_name' => 'user_1', 'password' => 'password'],
         'domain' => []
     ];
 

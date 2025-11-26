@@ -10,7 +10,7 @@
     }
 
 
-/* форма авторизации */
+/* ================================================================= форма авторизации */
 .site-title {
         font-family: 'Arial Black', 'Segoe UI', sans-serif;
         font-size: 4rem;
@@ -60,7 +60,7 @@
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        justify-content: center;
+        /* justify-content: center; */
         min-height: 100vh;
         background: var(--dark-gradient);
         padding: 20px;
@@ -213,3 +213,4 @@
             transform: translateY(0);
         }
     }
+/* ================================================================= форма авторизации */

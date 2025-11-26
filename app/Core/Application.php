@@ -6,6 +6,7 @@ use App\Src\Controller;
 use Error;
 use Exception;
 use App\Core\Config;
+use App\Core\Request;
 
 class Application{
     private $route;
@@ -25,10 +26,11 @@ class Application{
             session_start();
             $this->initController();
             $this->initMethod();
-            $content = $this->controller->{$this->method}();
+            $request = new Request(); 
+            $content = $this->controller->{$this->method}($request);
             echo $content;
 
-        } catch (Error $e){
+        } catch (Error $e){ __($e); die();
             __('404');
         }   
     }

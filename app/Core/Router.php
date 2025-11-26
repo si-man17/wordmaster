@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-
-
 class Router {
     public static $params = [];
     private $controller_name;
@@ -13,7 +11,9 @@ class Router {
     private $static_routes = [
         '/user/auth/' => ['class'=> 'Page', 'action' => 'authPage'],
         'page404' => ['class' => 'Page', 'action' => '404'],
-        '/' => ['class' => 'Page', 'action' => 'init']
+        '/' => ['class' => 'Page', 'action' => 'init'],
+        '/user/register/' => ['class'=> 'User', 'action' => 'registerUser'],
+        '/user/login/' => ['class'=> 'User', 'action' => 'login']
     ];
 
 

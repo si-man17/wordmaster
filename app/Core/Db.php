@@ -20,6 +20,11 @@ class Db{
 
     }
 
+    public static function escare($data){ 
+        $dat = self::getInstance()->getConnect(); 
+        return $dat->quote($data);
+    }
+
     public function __wakeup() {
         throw new \Exception("Cannot unserialize singleton");
     }
@@ -124,14 +129,14 @@ class Db{
                 
                 if (SHOW_ERROR){
                     __($e->getCode());
-                    __($$e->getMessage()); die();
+                    __($e->getMessage()); die();
                 }else{
                     __('error db connect'); die();
                 }
 
             }
         }
-        // return $this->pdo;
+        return $this->pdo;
     }
 
     public function lastInsertId(){

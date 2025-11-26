@@ -1,26 +1,70 @@
 <div class='auth_form'>
-    <div class='header-auth-type'>
-        <span class='auth-line add-line'>Авторизация</span>
-        <span class='reg-line'>Регистрация</span>
+    <div class='header-auth-type' >
+        <span class='auth-line add-line' onclick='change_login_block(this)'>Авторизация</span>
+        <span class='reg-line' onclick='change_login_block(this)'>Регистрация</span>
     </div>
-    <div class='auth-form-fields bg-dark'>
-        <form method='POST' class='form-input-auth'>
+    <div class='auth-form-fields bg-dark auth-form-field'>
+        <form method='POST' class='form-input-auth' action='/user/login/'>
             <label class='title-form-auth title-text-form'>Авторизация</label>
-            <input name='action' value='auth' hidden>
             <div>
-                <label for='name_block_input'>Логин</label>
-                <input class='form-control' type='text' required placeholder="логин" id='name_block_input'>
+                <label for='name_block_input'>email</label>
+                <input class='form-control' type='text' name='email' required placeholder="логин" id='name_block_input'>
             </div>
             <div>
                 <label for='pswd_block_input'>Пароль</label>
-                <input id='pswd_block_input' type="password" class='form-control' required placeholder="пароль">
+                <input id='pswd_block_input' type="password" name='password' class='form-control' required placeholder="пароль">
+            </div>
+            <button type='submit' class="btn btn-success btn-glow">Войти</button>
+        </form>            
+    </div>
+
+    <div class='auth-form-fields reg-form-field bg-dark' hidden>
+        <form method='POST' class='form-input-auth' action='<?=ROOT_PATH?>/user/register/'>
+            <label class='title-form-auth title-text-form'>Регистрация</label>
+            <input name='action' value='reg' hidden>
+
+            <div>
+                <label for='name_input'>Имя</label>
+                <input class='form-control' type='text' name='name' required placeholder="имя" id='name_input'>
+            </div>
+            
+            <div>
+                <label for='name_block_input'>Фамилия</label>
+                <input class='form-control' type='text' name='surname' required placeholder="фамилия" id='surname_block_input'>
+            </div>
+
+            <div>
+                <label for='name_block_input'>email</label>
+                <input class='form-control' type='text' name='email' required placeholder="логин" id='name_block_input'>
+            </div>
+            <div>
+                <label for='pswd_block_input'>Пароль</label>
+                <input id='pswd_block_input' type="password" name='password' class='form-control' required placeholder="пароль">
             </div>
             <button type='submit' class="btn btn-success btn-glow">Войти</button>
         </form>            
     </div>
 </div>
 
-<style>
-  
 
-</style>
+<script>
+    function change_login_block(e){
+        if (e.classList.contains('reg-line')){
+            document.querySelector('.header-auth-type .auth-line').classList.remove('add-line');
+            document.querySelector('.header-auth-type .reg-line').classList.add('add-line');
+            document.querySelector('.reg-form-field').removeAttribute('hidden');
+            document.querySelector('.auth-form-field').setAttribute('hidden', 'true');
+        } else {
+            document.querySelector('.header-auth-type .auth-line').classList.add('add-line');
+            document.querySelector('.header-auth-type .reg-line').classList.remove('add-line');
+            document.querySelector('.reg-form-field').setAttribute('hidden', 'true');
+            document.querySelector('.auth-form-field').removeAttribute('hidden');
+        }
+    }
+</script>
+
+
+
+
+
+
