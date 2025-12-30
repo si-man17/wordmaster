@@ -42,7 +42,7 @@ class Application{
 
     private function initMethod(){
         $class = $this->route->getControllerName();
-        $method = $this->route->getActionName();
+        $method = $this->route->getActionName(); 
         if (method_exists($class, $method . 'Action')) $this->method = $method. 'Action';
     }
     

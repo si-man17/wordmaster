@@ -13,12 +13,12 @@ class Router {
         'page404' => ['class' => 'Page', 'action' => '404'],
         '/' => ['class' => 'Page', 'action' => 'init'],
         '/user/register/' => ['class'=> 'User', 'action' => 'registerUser'],
-        '/user/login/' => ['class'=> 'User', 'action' => 'login']
+        '/user/login/' => ['class'=> 'User', 'action' => 'login'],
+        '/words/list/' => ['class' => 'Page', 'action' => 'getWordslist'],
+        '/word/add/' => ['class' => 'Word', 'action' => 'add']
     ];
 
-
-    public function process(){ ///// тут добавить сборку параметров с get и post, а так же сразу экранирование!!!
-        
+    public function process(){   
         $path = parse_url($_SERVER['REQUEST_URI'])['path'];
         $parts_first = explode('/', $path);
         $parts = array_diff($parts_first, ['']);
@@ -38,7 +38,6 @@ class Router {
         if (!$this->is_process) $this->process();
         return $this->controller_name;
     }
-
 
     public function getActionName(){
         if (!$this->is_process) $this->process();

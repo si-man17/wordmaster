@@ -18,8 +18,13 @@ class User{
     }
 
     public function loginAction(Request $request){
-        $user = UserModel::getInstance($request->post);
-        __($request); die();
+        $auth = UserModel::loginAuth($request->post);
+        $redirect = new Redirect('/');
+        
+        if ($auth){
+            Toast::add('Добро пожаловать, ' . $auth->name. ' ' . $auth->surname, 'info');
+        } else Toast::add('Пользователь не найден', 'info');
+        $redirect->goTo('200');
     }
 
     public function registerUserAction(Request $request){

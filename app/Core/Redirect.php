@@ -29,7 +29,7 @@ class Redirect{
         if (!empty($params))  $this->get_str .= '?';
 
         foreach($params as $par_key => $val){
-            $this->get_str .= $par_key . '=' . $val . '&';    
+            $this->get_str .= $par_key . '=' . $val . '&';
         }
     }
 }

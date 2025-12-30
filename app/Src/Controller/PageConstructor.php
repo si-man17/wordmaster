@@ -2,6 +2,7 @@
 
 namespace App\Src\Controller;
 use App\Core\View;
+use App\Src\Model\User;
 
 class PageConstructor{
     public $header;
@@ -10,17 +11,28 @@ class PageConstructor{
 
     public function __construct(){
         $this->header = $this->initHeader();
-        $this->footer = $this->initFooter();
+        $this->footer = $this->initFooter(); 
     }
 
     public function initLoginPage(){
         $view = new View();
         return $view->render('login.phtml', []);    
     }
+
+    public static function genWordForm(String $content){
+        $view = new View();
+        return $view->render('body.phtml', ['content' => $content]);
+    }
     
     public function initHeader(){
         $view = new View();
-        return $view->render('header.phtml', []);    
+        $user = null;
+        if (!empty($_SESSION) && !empty($_SESSION['user_id'])) $user_id = $_SESSION['user_id'];
+        
+        if (!empty($user_id))
+            $user = User::getUserById($user_id); 
+
+        return $view->render('header.phtml', ['user' => $user]);
     }
 
     public function initFooter(){
@@ -28,24 +40,13 @@ class PageConstructor{
         return $view->render('footer.phtml', []);
     }
 
-    public function addToast($id, $message, $params){
-        //// params = параметры из get по которым срабатывает уведомление
-        $html = '<div class="toast-container position-fixed top-0 end-0 p-3">
-                    <div id="'.$id.'" class="toast" role="alert">
-                        <div class="toast-header">
-                            <strong class="me-auto">Уведомление</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-                        </div>
-                        <div class="toast-body">
-                            '.$message.'
-                        </div>
-                    </div>
-                </div>'; 
-         
-    }
-
     public static function genAuthPage(){
         $view = new View();
         return $view->render('form_auth.phtml');
+    }
+
+    public function generateBody(){
+        $view = new View();
+        return $view->render('body.phtml');
     }
 }

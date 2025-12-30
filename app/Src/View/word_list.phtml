@@ -1,0 +1,19 @@
+<div class='add_word_form'>
+    <span>Новое слово</span>
+    <form class='form_flex' method='post' action='/word/add/'>
+        <div class='' style='width:100%;'>
+            <label for='word_name'>Слово</label>
+            <input class='form-control' name='word_name' id='word_name' type='text' required>
+        </div>
+        <div class='' style='width:100%;'>
+            <label for='word_tr'>Перевод</label>
+            <input class='form-control' name='word_tr' id='word_tr' type='text' required>
+        </div>
+        <div class='' style='width:100%;'>
+            <label for='word_rep'>Транскрипция</label>
+            <input class='form-control' name='word_rep' id='word_rep' type='text' required>
+        </div>
+        <button type='submit' class="btn btn-success">Добавить</button>
+    </form>
+</div>
+
